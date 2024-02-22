@@ -91,9 +91,9 @@ class FileController extends Controller
 
     public function index()
     {
-        $files = EncryptedFile::all();
+        $home = EncryptedFile::all();
 
-        return view('files.index', compact('files'));
+        return view('home.index', compact('home'));
     }
 
 
@@ -102,7 +102,7 @@ class FileController extends Controller
     public function decrypt(Request $request)
     {
         $request->validate([
-            'decrypt_data' => 'required|exists:encrypted_files,id',
+            'decrypt_data' => 'required|exists:encrypted_home,id',
         ]);
 
         $selectedFileId = $request->input('decrypt_data');
@@ -137,7 +137,7 @@ class FileController extends Controller
             $originalFilename = $selectedFile->filename;
             $downloadFilename = Str::slug(pathinfo($originalFilename, PATHINFO_FILENAME), '_') . '.docx';
             $originalFilenameWithoutPrefix = preg_replace('/^encrypted_/', '', $originalFilename);
-           
+
 
             // Create a PHPWord instance and add the decrypted content as plain text to a DOCX file
             $phpWord = new PhpWord();
