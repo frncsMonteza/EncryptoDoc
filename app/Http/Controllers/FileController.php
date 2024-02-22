@@ -137,6 +137,8 @@ class FileController extends Controller
             $originalFilename = $selectedFile->filename;
             $downloadFilename = Str::slug(pathinfo($originalFilename, PATHINFO_FILENAME), '_') . '.docx';
             $originalFilenameWithoutPrefix = preg_replace('/^encrypted_/', '', $originalFilename);
+           
+
             // Create a PHPWord instance and add the decrypted content as plain text to a DOCX file
             $phpWord = new PhpWord();
             $section = $phpWord->addSection();
@@ -145,11 +147,11 @@ class FileController extends Controller
             // Save the DOCX file to storage
             $docxFilePath = 'decrypted_' . $downloadFilename;
             $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
-            $objWriter->save(storage_path('app/public/' . $docxFilePath));
+            $objWriter->save(storage_path('app/' . $docxFilePath));
 
             // Return the decrypted file as a download response with the original filename
             return response()->download(
-                storage_path('app/public/' . $docxFilePath),
+                storage_path('app/' . $docxFilePath),
                 'decrypted_' . $originalFilenameWithoutPrefix,
                 [
                     'Content-Type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
