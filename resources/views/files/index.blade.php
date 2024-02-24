@@ -61,7 +61,7 @@
                                 <br><br>
                                 <select name="decrypt_data" id="decrypt_data" class="form-control">
                                     <option value="">Select a file</option>
-                                    @foreach ($home as $file)
+                                    @foreach ($files as $file)
                                         <option value="{{ $file->id }}">{{ $file->filename }}</option>
                                     @endforeach
                                 </select>
@@ -91,7 +91,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($home as $file)
+                        @foreach ($files as $file)
                             <tr>
                                 <td>{{ $file->id }}</td>
                                 <td>{{ $file->filename }}</td>

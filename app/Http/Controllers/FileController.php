@@ -91,9 +91,9 @@ class FileController extends Controller
 
     public function index()
     {
-        $home = EncryptedFile::all();
+        $files = EncryptedFile::all();
 
-        return view('home.index', compact('home'));
+        return view('files.index', compact('files'));
     }
 
 
@@ -102,7 +102,7 @@ class FileController extends Controller
     public function decrypt(Request $request)
     {
         $request->validate([
-            'decrypt_data' => 'required|exists:encrypted_home,id',
+            'decrypt_data' => 'required|exists:encrypted_files,id',
         ]);
 
         $selectedFileId = $request->input('decrypt_data');
