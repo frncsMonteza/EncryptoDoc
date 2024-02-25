@@ -7,6 +7,7 @@
         <img class="mb-4" src="{!! url('images/bootstrap-logo.svg') !!}" alt="" width="72" height="57">
 
         <h1 class="h3 mb-3 fw-normal">Register</h1>
+        @include('layouts.partials.messages')
 
         <div class="form-group form-floating mb-3">
             <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="name@example.com" required="required" autofocus>
@@ -39,8 +40,14 @@
                 <span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span>
             @endif
         </div>
+        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+
+        <div class="text-center mt-3">
+            <a href="{{ route('login.show') }}">Already have an account?</a>
+        </div>
 
         @include('auth.partials.copy')
     </form>
