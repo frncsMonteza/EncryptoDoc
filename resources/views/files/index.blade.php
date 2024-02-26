@@ -79,7 +79,7 @@
         <br><br>
 
         <div class="card shadow-lg">
-            <h2 class="card-header">List of Encrypted Files</h2>
+            <h2 class="card-header">List of Encrypted home</h2>
             <div class="card-body">
                 <table class="table mt-3 table-bordered text-center">
                     <thead>
@@ -154,12 +154,18 @@
 
 
 
-@section('navbar')
+<!-- @section('navbar')
     <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <i class="fa-solid fa-shield-halved fa-beat"></i> <b>EncryptoDoc</b>
             </a>
+            @auth
+            {{auth()->user()->name}}
+                <div class="text-end">
+                <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout</a>
+                </div>
+            @endauth
         </div>
     </nav>
-@endsection
+@endsection -->

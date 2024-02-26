@@ -137,7 +137,7 @@ class FileController extends Controller
             $originalFilename = $selectedFile->filename;
             $downloadFilename = Str::slug(pathinfo($originalFilename, PATHINFO_FILENAME), '_') . '.docx';
             $originalFilenameWithoutPrefix = preg_replace('/^encrypted_/', '', $originalFilename);
-           
+
 
             // Create a PHPWord instance and add the decrypted content as plain text to a DOCX file
             $phpWord = new PhpWord();

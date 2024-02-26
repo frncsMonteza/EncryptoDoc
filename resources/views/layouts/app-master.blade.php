@@ -35,9 +35,13 @@
 
     @include('layouts.partials.navbar')
 
-    <main class="container">
-        @yield('content')
-    </main>
+    <main class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            @yield('content')
+        </div>
+    </div>
+</main>
 
     <!-- <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script> -->
 
