@@ -33,6 +33,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
             return redirect()->route('login.show');
         }
     });
+    Route::get('/', [FileController::class, 'index'])->name('file.index');
 
     Route::get('/home', function () {
         if (Auth::check()) {
