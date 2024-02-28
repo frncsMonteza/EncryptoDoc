@@ -32,9 +32,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
         } else {
             return redirect()->route('login.show');
         }
-    });
+    })->name('home');
 
-    Route::get('/home', [FileController::class, 'index'])->name('file.index');
+    Route::get('/file', [FileController::class, 'index'])->name('file.index');
+
+
+    // Route::get('/home', function () {
+    //     if (Auth::check()) {
+    //         return redirect()->route('file.index');
+    //     } else {
+    //         return redirect()->route('login.show');
+    //     }
+    // })->name('home');
 
     Route::group(['middleware' => ['guest']], function() {
         /**
