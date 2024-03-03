@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,18 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 // Route::get('/', [FileController::class, 'index'])->name('file.index');
+// routes/web.php
+// Route::get('/password', 'ForgotPasswordController@show')->name('password.show');
+// // Route::get('/login', 'LoginController@show')->name('login.show');
+
+// Route::get('/forgot-password', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+// Route::post('/forgot-password', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+// Route::get('/reset-password/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+// Route::post('/reset-password', 'ResetPasswordController@reset');
+// Auth::routes();
+
+
 Route::post('/upload', [FileController::class, 'upload'])->name('file.upload');
 Route::get('/download/{id}', [FileController::class, 'download'])->name('file.download');
 Route::post('/decrypt', [FileController::class, 'decrypt'])->name('file.decrypt');
@@ -52,7 +65,22 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
         Route::get('/register', 'RegisterController@show')->name('register.show');
         Route::post('/register', 'RegisterController@register')->name('register.perform');
 
+        Route::get('/password', 'ForgotPasswordController@show')->name('password.show');
+        Route::post('/password', 'ForgotPasswordController@password')->name('password.perform');
+
+        Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+        Route::get('/password/reset', 'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+        Route::post('/password/email', 'App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+        Route::get('/password/reset/{token}', 'App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
+        Route::post('/password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset')->name('password.update');
+        
+        Route::get('/reset-password/{token}', 'App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
+        
         /**
+         * 
+         * 
          * Login Routes
          */
         Route::get('/login', 'LoginController@show')->name('login.show');
