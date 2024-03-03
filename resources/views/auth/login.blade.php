@@ -27,9 +27,15 @@
                     <span class="text-danger text-left">{{ $errors->first('password') }}</span>
                 @endif
             </div>
-            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+            <!-- <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div> -->
+            {!! NoCaptcha::renderJs() !!}
+            {!! NoCaptcha::display() !!}
 
             <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+
+            <div class="text-center mt-3">
+                <a href="">Forgot your password?</a> <!-- This is the added line -->
+            </div>
 
             <div class="text-center mt-3">
                 <a href="{{ route('register.show') }}">Create an account</a>
