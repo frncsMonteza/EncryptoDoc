@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
+use Anhskohbo\NoCaptcha\Facades\NoCaptcha; // Assuming you want to keep this import
 
 class LoginController extends Controller
 {
@@ -29,12 +29,13 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $validate = Validator::make($request->all(), [
+        // Validate reCAPTCHA
+        $validator = Validator::make($request->all(), [
             'g-recaptcha-response' => 'required|captcha'
         ]);
 
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors(['captcha' => 'Please complete the reCAPTCHA.']);
         }
 
         $credentials = $request->getCredentials();
