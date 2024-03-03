@@ -42,7 +42,6 @@
                 @endif
             </div>
             <!-- <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div> -->
-
             {!! NoCaptcha::renderJs() !!}
             {!! NoCaptcha::display() !!}
             <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
