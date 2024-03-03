@@ -34,6 +34,10 @@
             <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
 
             <div class="text-center mt-3">
+                <a href="{{ route('password.show') }}">Forgot your password?</a> <!-- This is the added line -->
+            </div>
+
+            <div class="text-center mt-3">
                 <a href="{{ route('register.show') }}">Create an account</a>
             </div>
 
