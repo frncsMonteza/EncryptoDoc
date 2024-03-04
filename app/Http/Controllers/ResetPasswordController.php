@@ -1,8 +1,10 @@
 <?php
 
+namespace App\Http\Controllers;
 // ResetPasswordController.php
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+
 
 class ResetPasswordController extends Controller
 {
@@ -28,7 +30,7 @@ class ResetPasswordController extends Controller
         );
 
         return $status === Password::PASSWORD_RESET
-                    ? redirect()->route('login')->with(['status' => __($status)])
-                    : back()->withErrors(['email' => [__($status)]]);
+        ? redirect()->route('home')->with(['success' => 'Your password has been reset successfully. You can now log in.'])
+        : back()->withErrors(['email' => [__($status)]]);
     }
 }
