@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="card card-sm pt-5 mt-5">
+<div class="card card-sm bg-glass">
     <div class="card-body">
         <form method="post" action="{{ route('register.perform') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -44,10 +44,13 @@
             <!-- <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div> -->
             {!! NoCaptcha::renderJs() !!}
             {!! NoCaptcha::display() !!}
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
-            <div class="text-center mt-3">
-                <a href="{{ route('login.show') }}">Already have an account?</a>
-            </div>
+            <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Register</button>
+            <!-- <div class="text-center mt-3">
+                <a href="{{ route('login') }}">Already have an account?</a>
+            </div> -->
+            <p class="small fw-bold mt-2 pt-1 mb-0 text-center">Already have an account?
+                <a href="{{ route('login') }}"class="link-primary">Login</a>
+            </p>
             @include('auth.partials.copy')
         </form>
     </div>

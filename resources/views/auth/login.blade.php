@@ -1,11 +1,10 @@
 @extends('layouts.auth-master')
 
 @section('content')
-<div class="card card-sm pt-5 mt-5">
+<div class="card card-sm bg-glass">
     <div class="card-body">
-        <form method="post" action="{{ route('login.perform') }}" class="card-body">
+        <form method="post" action="{{ route('login.perform') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-            <!-- <img class="mb-4" src="{!! url('images/bootstrap-logo.svg') !!}" alt="" width="72" height="57"> -->
             <h1><b>EncryptoDoc</b></h1>
 
             <h1 class="h3 mb-3 fw-normal">Login</h1>
@@ -27,23 +26,19 @@
                     <span class="text-danger text-left">{{ $errors->first('password') }}</span>
                 @endif
             </div>
-            <!-- <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div> -->
             {!! NoCaptcha::renderJs() !!}
             {!! NoCaptcha::display() !!}
 
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-
+            <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Login</button>
             <div class="text-center mt-3">
-                <a href="{{ route('password.show') }}">Forgot your password?</a> <!-- This is the added line -->
+                <a href="{{ route('password.show') }}">Forgot password?</a>
             </div>
-
-            <div class="text-center mt-3">
-                <a href="{{ route('register.show') }}">Create an account</a>
-            </div>
+            <p class="small fw-bold mt-2 pt-1 mb-0 text-center">Don't have an account?
+                <a href="{{ route('register.show') }}"class="link-primary">Register</a>
+            </p>
 
             @include('auth.partials.copy')
         </form>
     </div>
-
 </div>
 @endsection
