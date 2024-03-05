@@ -20,8 +20,9 @@
             </div>
 
             <div class="form-group form-floating mb-3">
-                <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password" required="required">
+                <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password" required="required" id="password-field">
                 <label for="floatingPassword">Password</label>
+                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> <!-- Eye icon -->
                 @if ($errors->has('password'))
                     <span class="text-danger text-left">{{ $errors->first('password') }}</span>
                 @endif
@@ -41,4 +42,31 @@
         </form>
     </div>
 </div>
+
+<style>
+    .field-icon {
+        float: right;
+        margin-right: 10px;
+        margin-top: -35px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .field-icon:hover {
+        cursor: pointer;
+    }
+</style>
+
+<!-- JavaScript for Eye Icon -->
+<script>
+    $(".toggle-password").click(function() {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
+</script>
 @endsection
