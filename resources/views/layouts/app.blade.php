@@ -19,33 +19,45 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
+        body {
+            font-family: 'Poppins', sans-serif; /* Setting Poppins font for the entire body */
         }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
+        .background-radial-gradient {
+            background-color: hsl(218, 41%, 15%);
+            background-image: radial-gradient(650px circle at 0% 0%,
+                hsl(218, 41%, 35%) 15%,
+                hsl(218, 41%, 30%) 35%,
+                hsl(218, 41%, 20%) 75%,
+                hsl(218, 41%, 19%) 80%,
+                transparent 100%),
+              radial-gradient(1250px circle at 100% 100%,
+                hsl(218, 41%, 45%) 15%,
+                hsl(218, 41%, 30%) 35%,
+                hsl(218, 41%, 20%) 75%,
+                hsl(218, 41%, 19%) 80%,
+                transparent 100%);
+        }
+        .bg-glass {
+            background-color: hsla(0, 0%, 100%, 0.5) !important; /* Adjust the alpha value to control visibility */
+            backdrop-filter: saturate(200%) blur(10px);
+            border-radius: 10px; /* Adjust the value as needed */
         }
     </style>
 
-
-    <!-- Custom styles for this template -->
-    <!-- <link href="{!! url('assets/css/app.css') !!}" rel="stylesheet"> -->
+    <!-- Include Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     @include('layouts.partials.navbar')
 
-    <main class="container">
-        @yield('content')
-    </main>
+
+    <section class="background-radial-gradient overflow-hidden vh-100">
+        <main class="container">
+            @yield('content')
+        </main>
+    </section>
 
     <!-- <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script> -->
 
