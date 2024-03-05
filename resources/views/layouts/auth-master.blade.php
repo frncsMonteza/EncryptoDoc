@@ -68,6 +68,7 @@
             hsl(218, 41%, 20%) 75%,
             hsl(218, 41%, 19%) 80%,
             transparent 100%);
+        overflow-y: auto; /* Enable vertical scrolling */
     }
 
     #radius-shape-1 {
@@ -100,7 +101,7 @@
     <link href="signin.css" rel="stylesheet">
 </head>
 <body>
-    <section class="background-radial-gradient overflow-hidden vh-100">
+    <section class="background-radial-gradient vh-100">
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
             <div class="row gx-lg-5 align-items-center mb-5">
                 <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
